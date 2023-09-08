@@ -191,4 +191,67 @@ class RegularExpressionsTest {
         assertFalse(RegularExpressions.checkPattern("http://192.168.0.1",
                 RegularExpressions.patterns.get("URL")));
     }
+
+    //SecurePassword Tests.
+    @Test
+    void checkPassword_1() {
+        assertTrue(RegularExpressions.checkPattern("C00l_Pass",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_2() {
+        assertTrue(RegularExpressions.checkPattern("SupperPas1",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_3() {
+        assertTrue(RegularExpressions.checkPattern("123456789Zx",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_4() {
+        assertTrue(RegularExpressions.checkPattern("___xxX_SuperEpicGamer1337__Xxx",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_5() {
+        assertTrue(RegularExpressions.checkPattern("9817cb6Y5892p",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_6() {
+        assertTrue(RegularExpressions.checkPattern("TotallyUnsecurePassword123",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    //SecurePassword FAIL tests.
+    @Test
+    void checkPassword_FAIL_NoDigits() {
+        assertFalse(RegularExpressions.checkPattern("TotallySecurePassword",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_FAIL_Hyphes() {
+        assertFalse(RegularExpressions.checkPattern("Se3ur2taaaaaaaa-a",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_FAIL_Cyrillic() {
+        assertFalse(RegularExpressions.checkPattern("12312КириллицаТожеПароль18594",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_FAIL_Symbols() {
+        assertFalse(RegularExpressions.checkPattern("BRAVEISBESTDEFENCE!!!*(&*($123",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_FAIL_NoDigits1() {
+        assertFalse(RegularExpressions.checkPattern("Cool_pass",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
+    @Test
+    void checkPassword_FAIL_TooShorts() {
+        assertFalse(RegularExpressions.checkPattern("C00l",
+                RegularExpressions.patterns.get("SecurePassword")));
+    }
 }

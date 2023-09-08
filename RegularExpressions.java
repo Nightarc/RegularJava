@@ -17,6 +17,9 @@ public class RegularExpressions {
 
         patterns.put("URL", Pattern.compile("^(\\w+://)?(\\w{2,}\\.)?(\\w{2,})\\.(\\w{2,})(:\\d{4,5})?((\\?\\p{L}+=\\p{L}+)(&\\p{L}+=\\p{L}+)*)?(#\\w+)?$",
                 Pattern.UNICODE_CASE));
+
+        patterns.put("SecurePassword", Pattern.compile("^(?=.*\\d)(?=.*[A-Za-z_])\\w{8,}$",
+                Pattern.UNICODE_CASE));
     }
     public static boolean checkPattern(String in, Pattern pattern) {
         if(pattern != null) {
