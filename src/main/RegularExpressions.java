@@ -1,6 +1,9 @@
+package src.main;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class RegularExpressions {
     public static HashMap<String, Pattern> patterns;
